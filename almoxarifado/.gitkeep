@@ -1,0 +1,5 @@
+almoxarifado/src/main/java/com/infnet/dr4/at/almoxarifado/commands/
+almoxarifado/src/main/java/com/infnet/dr4/at/almoxarifado/controllers/
+almoxarifado/src/main/java/com/infnet/dr4/at/almoxarifado/domain/dto/
+almoxarifado/src/main/java/com/infnet/dr4/at/almoxarifado/events/
+almoxarifado/src/main/java/com/infnet/dr4/at/almoxarifado/services/

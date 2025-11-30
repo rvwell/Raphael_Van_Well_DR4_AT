@@ -1,0 +1,5 @@
+transporte/src/main/java/com/infnet/dr4/at/transporte/commands/
+transporte/src/main/java/com/infnet/dr4/at/transporte/controllers/
+transporte/src/main/java/com/infnet/dr4/at/transporte/domain/dto/
+transporte/src/main/java/com/infnet/dr4/at/transporte/events/
+transporte/src/main/java/com/infnet/dr4/at/transporte/services/
