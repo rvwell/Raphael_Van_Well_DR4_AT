@@ -1,3 +1,40 @@
+server:
+  port: 8081
+
 spring:
   application:
-    name: transporte
+    name: petfriends-transporte
+
+  datasource:
+    url: jdbc:h2:mem:transportedb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  cloud:
+    stream:
+      function:
+        definition: processarSolicitacaoEntrega
+
+      bindings:
+        processarPedidoFechado-in-0:
+          destination: ex.pedidos
+          group: q.transporte.coleta
+          content-type: application/json
+
+      rabbit:
+        bindings:
+          processarPedidoFechado-in-0:
+            consumer:
+              bindingRoutingKey: pedido.pront_envio
+              exchangeType: topic
+              autoBindDlq: true

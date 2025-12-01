@@ -15,16 +15,17 @@ public class OrdemSeparacao {
     @Enumerated(EnumType.STRING)
     private StatusSeparacao status;
 
-    @Embedded
-    private LocalizacaoEstoque localizacaoDestino;
-
     @ElementCollection
-    private List<String> itensSku;
+    @CollectionTable(
+            name = "itens_separacao",
+            joinColumns = @JoinColumn(name = "ordem_separacao_id")
+    )
+    private List<ItemSeparacao> itens;
 
-    public OrdemSeparacao(UUID pedidoOriginalId, List<String> itensSku) {
+    public OrdemSeparacao(UUID pedidoOriginalId, List<ItemSeparacao> itens) {
         this.id = UUID.randomUUID();
         this.pedidoId = pedidoOriginalId;
-        this.itensSku = itensSku;
+        this.itens = itens;
         this.status = StatusSeparacao.PENDENTE;
     }
 
