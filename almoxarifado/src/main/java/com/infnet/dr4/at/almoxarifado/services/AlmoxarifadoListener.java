@@ -29,7 +29,7 @@ public class AlmoxarifadoListener {
 
             List<ItemSeparacao> itensComLocalizacao = event.getItens().stream()
                     .map(itemDto -> {
-                        LocalizacaoEstoque loc = buscarLocalizacaoNoWMS(itemDto.sku());
+                        LocalizacaoEstoque loc = buscarLocalizacao(itemDto.sku());
                         return new ItemSeparacao();
                     })
                     .collect(Collectors.toList());
@@ -43,7 +43,7 @@ public class AlmoxarifadoListener {
         };
     }
 
-    private LocalizacaoEstoque buscarLocalizacaoNoWMS(String sku) {
+    private LocalizacaoEstoque buscarLocalizacao(String sku) {
         int hash = Math.abs(sku.hashCode());
         String corredor = "C" + (hash % 10);
         String prateleira = "P" + (hash % 50);
