@@ -102,6 +102,12 @@
             <artifactId>spring-cloud-stream-test-binder</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.infnet.dr4.at</groupId>
+            <artifactId>almoxarifado</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 	<dependencyManagement>
 		<dependencies>

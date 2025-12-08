@@ -2,39 +2,9 @@
     port: 8081
 
   spring:
-    application:
-      name: petfriends-almoxarifado
-
-    datasource:
-      url: jdbc:h2:mem:almoxarifadodb
-      driverClassName: org.h2.Driver
-      username: sa
-      password:
-    h2:
-      console:
-        enabled: true
-        path: /h2-console
-    jpa:
-      database-platform: org.hibernate.dialect.H2Dialect
-      hibernate:
-        ddl-auto: update
-      show-sql: true
-
     cloud:
       stream:
-        function:
-          definition: processarPedidoFechado
-
         bindings:
           processarPedidoFechado-in-0:
-            destination: ex.pedidos
-            group: q.almoxarifado.preparacao
-            content-type: application/json
-
-        rabbit:
-          bindings:
-            processarPedidoFechado-in-0:
-              consumer:
-                bindingRoutingKey: pedido.fechado
-                exchangeType: topic
-                autoBindDlq: true
+            destination: petfriends.pedidos.fechados
+            group: almoxarifado-group
